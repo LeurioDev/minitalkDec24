@@ -16,7 +16,7 @@ void send_bit(pid_t pid, char bit) {
       send_signal(pid, SIGUSR2);
     else
       send_signal(pid, SIGUSR1);
-    usleep(1000);
+    usleep(500);
     i--;
   }
   /*binary = char_to_binary(bit);
@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
   i = 0;
   while (sms[i]) {
     send_bit(server_pid, sms[i]);
-    usleep(1500);
+    usleep(500);
     i++;
   }
   send_bit(server_pid, '\0');

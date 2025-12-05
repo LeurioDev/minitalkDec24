@@ -8,7 +8,7 @@ SRCS_CLIENT = srcs/client.c
 SRCS_SERVER = srcs/server.c
 SERVER = server
 CLIENT = client
-OBJ = srcs/$(SRCS:.c=.o)
+OBJ = $(SRCS:.c=.o)
 
 all: $(SERVER) $(CLIENT)
 	@echo "\033[32mAll done\033[0m"
@@ -17,11 +17,11 @@ $(NAME): all
 
 $(SERVER): $(SRCS_SERVER) $(HEADER)
 	@echo "\033[33mCompiling\033[0m"
-	@$(CC) $(CFLAGS) -o $(SERVER) $(SRCS_SERVER) $(OBJ)
+	@$(CC) $(CFLAGS) -o $(SERVER) $(SRCS_SERVER) $(SRCS)
 
 $(CLIENT): $(SRCS_CLIENT) $(HEADER)
 	@echo "\033[33mCompiling\033[0m"
-	@$(CC) $(CFLAGS) -o $(CLIENT) $(SRCS_CLIENT) $(OBJ)
+	@$(CC) $(CFLAGS) -o $(CLIENT) $(SRCS_CLIENT) $(SRCS)
 
 clean:
 	@echo "\033[33mCleaning\033[0m"
@@ -35,4 +35,4 @@ fclean:
 
 re: fclean all
 
-.PHONY: all clean
+.PHONY: all clean re
