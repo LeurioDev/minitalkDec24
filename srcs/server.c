@@ -30,6 +30,8 @@ void handle_msm(int sig, siginfo_t *info, void *context) {
   c = c << 1;
   if (sig == SIGUSR2)
     c = c | 1;
+  if (sig == SIGINT)
+    bit = 0;
   bit++;
   if (bit == 8) {
     if (c == '\0')
